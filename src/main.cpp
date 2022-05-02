@@ -1,36 +1,19 @@
+#include <memory>
 #include <iostream>
 #include <random>
 #include <ctime>
 
+#include "Data.h"
 #include "BinaryTree.h"
 
-class A {
- public:
-  explicit A (int id) : id_(id) {}
-
-  friend bool operator<(const A& l, const A& r){
-    return l.id_ < r.id_;
-  }
-
-  friend bool operator>(const A& l, const A& r){
-    return !(l < r);
-  }
-
-  friend bool operator==(const A& l, const A& r){
-    return l.id_ == r.id_;
-  }
-
-  friend bool operator!=(const A& l, const A& r){
-    return !(l == r);
-  }
-
- private:
-  int id_;
-};
+using namespace ds;
 
 int main()
 {
-  BinaryTree<A>* binary_tree = new BinaryTree<A>();
+  using ds::BinaryTree;
+  using ds::Data;
+
+  std::unique_ptr<BinaryTree<Data>> binary_tree = std::make_unique<BinaryTree<Data>>();
 
   std::srand(std::time(nullptr));
   const int size = std::rand()/((RAND_MAX + 1u)/2048);
@@ -38,9 +21,8 @@ int main()
   for (int i = 0; i < size; ++i) {
     int random_value = std::rand()/((RAND_MAX + 1u)/2048);
     std::cout << i << ' ' << random_value << '\n';
-    binary_tree->insert(A(random_value));
+    binary_tree->insert(Data(random_value));
   }
 
-  delete binary_tree;
   return 0;
 }

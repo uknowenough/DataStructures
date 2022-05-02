@@ -1,53 +1,9 @@
 #ifndef BINARYTREE_H
 #define BINARYTREE_H
 
-template<typename T>
-class Node {
- public:
-  explicit Node(const T& value)
-      : value_(value),
-        l_(nullptr),
-        r_(nullptr) {}
+#include "Node.h"
 
-  /**
-   * @brief Деструктор
-   */
-  ~Node() {
-    if (l_) {
-      delete l_;
-      l_ = nullptr;
-    }
-
-    if (r_) {
-      delete r_;
-      r_ = nullptr;
-    }
-  }
-
-  void insert(T value)
-  {
-    if (value > value_) {
-      if (!r_) {
-        r_ = new Node(value);
-      } else {
-        r_->insert(value);
-      }
-    } else if (value < value_) {
-      if (!l_) {
-        l_ = new Node(value);
-      } else {
-        l_->insert(value);
-      }
-    }
-  }
-
- private:
-  //! Данные
-  T value_;
-
-  Node* l_;
-  Node* r_;
-};
+namespace ds {
 
 template<typename T>
 class BinaryTree
@@ -56,7 +12,8 @@ class BinaryTree
   /**
    * @brief Конструктор по умолчанию
    */
-  BinaryTree() : root_node_(nullptr) {}
+  BinaryTree()
+      : root_node_(nullptr) {}
 
   /**
    * @brief Деструктор бинарного дерева
@@ -96,5 +53,7 @@ class BinaryTree
   Node<T>* root_node_;
 
 };
+
+}
 
 #endif // BINARYTREE_H
