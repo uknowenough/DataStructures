@@ -33,7 +33,7 @@ class BinaryTree
   void insert(T value)
   {
     if (!root_node_)
-      root_node_ = new Node<T>(value);
+      root_node_ = new DoubleNode<T>(value);
 
     root_node_->insert(value);
   }
@@ -48,9 +48,14 @@ class BinaryTree
     return false;
   }
 
+  int countNode() const
+  {
+    return (root_node_) ? root_node_->countChildren() : 0;
+  }
+
  private:
   //! Root node
-  Node<T>* root_node_;
+  DoubleNode<T>* root_node_;
 
 };
 

@@ -4,9 +4,36 @@
 namespace ds {
 
 template<typename T>
-class Node {
+class SingleNode {
  public:
-  explicit Node(const T& value)
+  explicit SingleNode(const T& value)
+      : value_(value),
+        next_node_(nullptr) {}
+
+  ~SingleNode() {
+    next_node_ = nullptr;
+  }
+
+  void setNext(SingleNode<T>* next) { next_node_ = next; }
+  SingleNode<T>* next() { return next_node_; }
+
+  void insert(T value) {
+    if (!next_node_) next_node_ = new SingleNode(value);
+  }
+
+  const T& value() const { return value_; }
+
+ private:
+  //! Данные
+  T value_;
+
+  SingleNode* next_node_;
+};
+
+template<typename T>
+class DoubleNode {
+ public:
+  explicit DoubleNode(const T& value)
       : value_(value),
         l_(nullptr),
         r_(nullptr) {}
@@ -14,7 +41,7 @@ class Node {
   /**
    * @brief Деструктор
    */
-  ~Node() {
+  ~DoubleNode() {
     if (l_) {
       delete l_;
       l_ = nullptr;
@@ -30,25 +57,32 @@ class Node {
   {
     if (value > value_) {
       if (!r_) {
-        r_ = new Node(value);
+        r_ = new DoubleNode(value);
       } else {
         r_->insert(value);
       }
     } else if (value < value_) {
       if (!l_) {
-        l_ = new Node(value);
+        l_ = new DoubleNode(value);
       } else {
         l_->insert(value);
       }
     }
   }
 
+  int countChildren() const {
+    int count = 0;
+    if (l_) count += l_->countChildren() + 1;
+    if (r_) count += r_->countChildren() + 1;
+    return count;
+  }
+
  private:
   //! Данные
   T value_;
 
-  Node* l_;
-  Node* r_;
+  DoubleNode* l_;
+  DoubleNode* r_;
 };
 
 }

@@ -6,8 +6,6 @@
 #include "Data.h"
 #include "BinaryTree.h"
 
-using namespace ds;
-
 int main()
 {
   using ds::BinaryTree;
