@@ -12,4 +12,4 @@ add_executable(DataStructures src/main.cpp
     include/SinglyLinkedList.h
     include/BinaryTree.h)
 
-add_subdirectory(tests)
+#add_subdirectory(tests)
