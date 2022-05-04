@@ -7,7 +7,7 @@
 
 namespace ds {
 
-template<typename T = int>
+template<typename T>
 class SinglyLinkedList {
  public:
   SinglyLinkedList()
@@ -25,10 +25,10 @@ class SinglyLinkedList {
       return tail_->value();
     } else {
       int counter = index;
-      SingleNode<T>* node = head_;
+      auto node = head_;
       while (counter != 0) {
         node = node->next();
-        counter--;
+        --counter;
       }
 
       return node->value();
@@ -37,11 +37,11 @@ class SinglyLinkedList {
     return -1;
   }
 
-  void addAtHead(T val) {
+  void addAtHead(const T& val) {
     auto new_head = new SingleNode<T>(val);
     new_head->setNext(head_);
-    head_ = new_head;
 
+    head_ = new_head;
     if (!tail_)
       tail_ = head_;
 
@@ -62,7 +62,8 @@ class SinglyLinkedList {
   }
 
   void addAtIndex(int index, T val) {
-    if (index > length_)
+    if (index < 0
+        || index > length_)
       return;
 
     if (index == 0) {
@@ -71,13 +72,13 @@ class SinglyLinkedList {
       addAtTail(val);
     } else {
       int counter = 0;
-      SingleNode<T>* node = head_;
-      while (counter != index-1) {
+      auto node = head_;
+      while (counter != (index-1)) {
         node = node->next();
         ++counter;
       }
 
-      SingleNode<T>* new_node = new SingleNode<T>(val);
+      auto new_node = new SingleNode<T>(val);
       new_node->setNext(node->next());
       node->setNext(new_node);
 
@@ -86,22 +87,23 @@ class SinglyLinkedList {
   }
 
   void deleteAtIndex(int index) {
-    if (index >= length_)
+    if (index < 0
+        || index >= length_)
       return;
 
     if (index == 0) {
-      SingleNode<T>* ptr = head_;
+      auto ptr = head_;
       head_ = ptr->next();
       delete ptr;
     } else {
       int counter = index;
-      SingleNode<T>* node = head_;
+      auto node = head_;
       while ((--counter) != 0) {
         node = node->next();
       }
 
-      SingleNode<T>* next_node = node->next();
-      SingleNode<T>* ptr = next_node->next();
+      auto next_node = node->next();
+      auto ptr = next_node->next();
       node->setNext(ptr);
 
       if (next_node) {
@@ -120,7 +122,7 @@ class SinglyLinkedList {
   }
 
   friend std::ostream& operator<<(std::ostream& out, const SinglyLinkedList<T>& list) {
-    SingleNode<T>* ptr = list.head_;
+    auto ptr = list.head_;
     while (ptr != nullptr) {
       out << ptr->value() << "->";
       ptr = ptr->next();

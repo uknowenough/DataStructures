@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 7.0.1, 2022-05-03T12:54:57. -->
+<!-- Written by QtCreator 7.0.1, 2022-05-03T17:15:08. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -67,7 +67,13 @@
     <value type="bool" key="AutoTest.Framework.QtQuickTest">true</value>
     <value type="bool" key="AutoTest.Framework.QtTest">true</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="AutoTest.CheckStates"/>
+   <valuemap type="QVariantMap" key="AutoTest.CheckStates">
+    <value type="Qt::CheckState" key="1@/home/unow/projects/personal/data-structures/tests/tst_binarytree.cpp:EmptyInputData">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/unow/projects/personal/data-structures/tests/tst_singlylinkedlist.cpp:Leet">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/unow/projects/personal/data-structures/tests/tst_singlylinkedlist.cpp:LeetCode">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/unow/projects/personal/data-structures/tests/tst_singlylinkedlist.cpp:LeetCodeImput">Checked</value>
+    <value type="Qt::CheckState" key="1@/home/unow/projects/personal/data-structures/tests/tst_singlylinkedlist.cpp:SinglyLinkedList">Checked</value>
+   </valuemap>
    <value type="int" key="AutoTest.RunAfterBuild">0</value>
    <value type="bool" key="AutoTest.UseGlobal">true</value>
    <valuelist type="QVariantList" key="ClangCodeModel.CustomCommandLineKey"/>
@@ -294,9 +300,9 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">data-structures</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.data-structures</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">data-structures</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">DataStructures</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.DataStructures</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">DataStructures</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>

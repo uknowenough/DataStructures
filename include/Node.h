@@ -10,9 +10,7 @@ class SingleNode {
       : value_(value),
         next_node_(nullptr) {}
 
-  ~SingleNode() {
-    next_node_ = nullptr;
-  }
+  ~SingleNode() {}
 
   void setNext(SingleNode<T>* next) { next_node_ = next; }
   SingleNode<T>* next() { return next_node_; }
